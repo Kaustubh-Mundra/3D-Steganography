@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Secure 3D Steganography</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="title">Secure 3D Steganography System</div>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Hide Medical File</h2>
+
+<form method="POST" action="/encrypt" enctype="multipart/form-data" onsubmit="showLoader()">
+
+<input type="file" name="file" required>
+
+<select name="model" required>
+{% for model, cap in models.items() %}
+<option value="{{model}}">{{model}} ({{cap}} MB)</option>
+{% endfor %}
+</select>
+
+<button>Encrypt & Embed</button>
+<div class="loader" id="loader"></div>
+
+</form>
+
+</div>
+
+<div class="card">
+
+<h2>Extract Hidden File</h2>
+
+<form method="POST" action="/extract" enctype="multipart/form-data">
+
+<input type="file" name="stego" required>
+
+<input type="text" name="key" placeholder="Secret Key" required>
+
+<button>Extract & Decrypt</button>
+
+</form>
+
+</div>
+
+</div>
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

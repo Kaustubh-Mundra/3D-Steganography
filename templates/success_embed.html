@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Embedding Success</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card" style="text-align:center;">
+
+<h2>✅ File Embedded Successfully</h2>
+
+<p><b>Selected Model:</b> {{ model }}</p>
+
+<p><b>Secret Key:</b></p>
+
+<div id="secretKey" style="word-wrap:break-word;margin-bottom:10px;">
+{{ key }}
+</div>
+
+<button onclick="copyKey()">Copy Key</button>
+
+<div id="toast">Key Copied!</div>
+
+<br><br>
+
+<p><b>File Size:</b> {{ file_size }} MB</p>
+<p><b>Carrier Capacity:</b> {{ capacity }} MB</p>
+<p><b>Usage:</b> {{ usage }}%</p>
+
+<br>
+
+<svg width="160" height="160" viewBox="0 0 160 160">
+<circle cx="80" cy="80" r="70" stroke="#555" stroke-width="10" fill="none"/>
+
+<circle cx="80" cy="80" r="70"
+stroke="#00ffcc"
+stroke-width="10"
+fill="none"
+stroke-dasharray="440"
+stroke-dashoffset="{{ 440 - (440 * usage / 100) }}"
+transform="rotate(-90 80 80)"/>
+
+<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+fill="white" font-size="22">
+{{ usage }}%
+</text>
+</svg>
+
+<br><br>
+
+<a href="/download_stego">
+<button>Download Stego Image</button>
+</a>
+
+<br><br>
+
+<a href="/" class="back-btn">⬅ Back to Home</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
