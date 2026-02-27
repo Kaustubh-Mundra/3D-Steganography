@@ -1,5 +1,5 @@
-Flask
-numpy
-Pillow
-cryptography
+flask
 gunicorn
+numpy
+pillow
+opencv-python
